@@ -11,7 +11,7 @@ const messageSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }
-});
+},{ timestamps: true });
 
 
 // problem with removing messages: need to delete reference

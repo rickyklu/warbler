@@ -37,8 +37,6 @@ exports.signin = async function(req, res, next){
     catch (e) {
     return next({ status: 400, message: "Invalid Email/Password." });
   }
-    
-    // checking if 
 }
 
 exports.signup = async function(req, res, next){
