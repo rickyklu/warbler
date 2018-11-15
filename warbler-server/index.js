@@ -25,6 +25,8 @@ app.use(
 // get messages route
 app.get("/api/messages", loginRequired, async function(req, res, next){
     try{
+        // get messages as a timeline
+        // and get username + profile pic to display
         let messages = await db.Message.find()
             .sort({ createdAt: "desc" })
             .populate("user",{
