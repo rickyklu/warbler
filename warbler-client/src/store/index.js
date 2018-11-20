@@ -11,8 +11,8 @@ export function configureStore(){
         compose(
             applyMiddleware(thunk),
             // used to redux dev tools debugging below
-            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-            //window.devToolsExtension ? window.devToolsExtension(): f => f
+            //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+            window.devToolsExtension ? window.devToolsExtension(): f => f
         )
     );
 

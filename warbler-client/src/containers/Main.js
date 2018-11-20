@@ -1,5 +1,6 @@
 import React from "react";
-import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
+// removed redirect from above
 import { connect } from "react-redux";
 import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
@@ -7,11 +8,15 @@ import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
 
 const Main = props => {
-  const { authUser, errors, removeError } = props;
+  const { authUser, errors, removeError, currentUser } = props;
   return (
     <div className="container">
       <Switch>
-        <Route exact path="/" render={props => <Homepage {...props} />} />
+        <Route 
+          exact 
+          path="/" 
+          render={props => <Homepage {...props} currentUser={currentUser} />} 
+        />
         <Route
           exact
           path="/signin"
@@ -52,6 +57,7 @@ const Main = props => {
 
 function mapStateToProps(state) {
   return {
+    currentUser: state.currentUser,
     errors: state.errors
   };
 }
