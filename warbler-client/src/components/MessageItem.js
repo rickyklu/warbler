@@ -6,6 +6,7 @@ import DefaultProfileImg from "../images/default-profile-image.jpg";
 const MessageItem = ({ date, profileImageUrl, text, username }) => {
   return (
     <div>
+      <li className="list-group-item">
       <img 
       // set default image if none
         src={profileImageUrl || DefaultProfileImg}
@@ -25,6 +26,7 @@ const MessageItem = ({ date, profileImageUrl, text, username }) => {
         </span>
         <p>{text}</p>
       </div>
+      </li>
     </div>
     
   )
