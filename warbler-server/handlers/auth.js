@@ -1,5 +1,6 @@
-const db = require("../models");
-const jwt = require("jsonwebtoken");
+const db = require('../models');
+const jwt = require('jsonwebtoken');
+const key = require('../config/keys');
 
 exports.signin = async function(req, res, next) {
   // finding a user
@@ -16,7 +17,8 @@ exports.signin = async function(req, res, next) {
           username,
           profileImageUrl
         },
-        process.env.SECRET_KEY
+        // process.env.SECRET_KEY
+        key.secretKey
       );
       return res.status(200).json({
         id,
@@ -27,11 +29,11 @@ exports.signin = async function(req, res, next) {
     } else {
       return next({
         status: 400,
-        message: "Invalid Email/Password."
+        message: 'Invalid Email/Password.'
       });
     }
   } catch (e) {
-    return next({ status: 400, message: "Invalid Email/Password." });
+    return next({ status: 400, message: 'Invalid Email/Password.' });
   }
 };
 
@@ -55,7 +57,7 @@ exports.signup = async function(req, res, next) {
     });
   } catch (err) {
     if (err.code === 11000) {
-      err.message = "Sorry, that username and/or email is taken";
+      err.message = 'Sorry, that username and/or email is taken';
     }
     return next({
       status: 400,

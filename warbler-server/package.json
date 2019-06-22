@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix warbler-client",
+    "dev": "concurrently \"npm run server \" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix warbler-client && npm run build --prefix warbler-client"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "description": "",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.2",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
