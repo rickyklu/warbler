@@ -1,0 +1,4 @@
+module.exports = {
+	secretKey: 'REPLACE_THIS_KEY_WITH_YOUR_OWN_RANDOM_STRING',
+	mongoUri: 'REPLACE_THIS_URI_WITH_YOUR_OWN_MONGO_DB'
+};

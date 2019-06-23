@@ -2,3 +2,4 @@ node_modules/
 #gvim swap files
 *.swp
 *Copy/
+dev.js
