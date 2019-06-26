@@ -8,6 +8,7 @@ const messagesRoutes = require('./routes/messages');
 const { loginRequired, ensureCorrectUser } = require('./middleware/auth');
 const db = require('./models');
 const PORT = process.env.PORT || 8081;
+const keys = require('./config/keys');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -45,5 +46,5 @@ app.use(errorHandler);
 
 app.listen(PORT, function() {
   console.log(`Server is starting on port ${PORT}`);
-  console.log('mongo uri is ', process.env.MONGO_URI);
+  console.log(`keys.mongoUri is ${keys.mongoUri}`);
 });
