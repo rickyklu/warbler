@@ -1,10 +1,10 @@
-import React from "react";
-import DefaultProfileImg from "../images/default-profile-image.jpg";
+import React from 'react';
+import DefaultProfileImg from '../images/default-profile-image.jpg';
 
 const UserAside = ({ profileImageUrl, username }) => (
   <aside className="col-sm-2">
     <div className="panel panel-default">
-      <img 
+      <img
         src={profileImageUrl || DefaultProfileImg}
         alt={username}
         width="200"
@@ -12,8 +12,8 @@ const UserAside = ({ profileImageUrl, username }) => (
         className="img-thumbnail"
       />
     </div>
+    <h5>@{username}</h5>
   </aside>
 );
-
 
 export default UserAside;

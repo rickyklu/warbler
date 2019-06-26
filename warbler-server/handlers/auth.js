@@ -46,7 +46,7 @@ exports.signup = async function(req, res, next) {
         username,
         profileImageUrl
       },
-      process.env.SECRET_KEY
+      key.secretKey
     );
     return res.status(200).json({
       id,

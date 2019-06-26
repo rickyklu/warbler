@@ -1,36 +1,36 @@
 // request to backend
-import { setTokenHeader, apiCall } from "../../services/api";
-import { SET_CURRENT_USER } from "../actionTypes";
-import { addError, removeError } from "./errors";
+import { setTokenHeader, apiCall } from '../../services/api';
+import { SET_CURRENT_USER } from '../actionTypes';
+import { addError, removeError } from './errors';
 
-export function setCurrentUser(user){
-    // will be sent to redux reducer
-    return {
-        type: SET_CURRENT_USER,
-        user
-    }
+export function setCurrentUser(user) {
+  // will be sent to redux reducer
+  return {
+    type: SET_CURRENT_USER,
+    user
+  };
 }
 
-export function setAuthorizationToken(token){
-    setTokenHeader(token);
+export function setAuthorizationToken(token) {
+  setTokenHeader(token);
 }
 
-export function logout(){
-    return dispatch => {
-        localStorage.clear();
-        setAuthorizationToken(false);
-        // populate an empty user object 
-        dispatch(setCurrentUser({}));
-    };
+export function logout() {
+  return dispatch => {
+    localStorage.clear();
+    setAuthorizationToken(false);
+    // populate an empty user object
+    dispatch(setCurrentUser({}));
+  };
 }
 
 export function authUser(type, userData) {
   return dispatch => {
     // wrap our thunk in a promise so we can wait for the API call
     return new Promise((resolve, reject) => {
-      return apiCall("post", `/api/auth/${type}`, userData)
+      return apiCall('post', `/api/auth/${type}`, userData)
         .then(({ token, ...user }) => {
-          localStorage.setItem("jwtToken", token);
+          localStorage.setItem('jwtToken', token);
           setAuthorizationToken(token);
           dispatch(setCurrentUser(user));
           dispatch(removeError());
