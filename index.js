@@ -44,6 +44,19 @@ app.use(function(req, res, next) {
 
 app.use(errorHandler);
 
+if (process.env.NODE_ENV === 'production') {
+  // express serves production assets (i.e. main.js, main.css)
+  app.use(express.static('warbler-client/build'));
+
+  // express serve index.html if non-express route(react routes)
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, 'warbler-client', 'build', 'index.html')
+    );
+  });
+}
+
 app.listen(PORT, function() {
   console.log(`Server is starting on port ${PORT}`);
   console.log(`keys.mongoUri is ${keys.mongoUri}`);

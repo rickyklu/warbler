@@ -22,9 +22,10 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.0",
-    "mongoose": "^5.0.10"
+    "mongoose": "^5.0.10",
+    "path-parser": "^4.2.0"
   },
   "devDependencies": {
-    "locus": "^2.0.1"
+    "locus": "^2.0.0"
   }
 }
