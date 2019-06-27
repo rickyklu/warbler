@@ -27,7 +27,7 @@ export const fetchMessages = () => {
         dispatch(loadMessages(res));
       })
       .catch(err => {
-        dispatch(addError(err.message));
+        dispatch(addError(err));
       });
   };
 };
