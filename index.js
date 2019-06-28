@@ -36,13 +36,25 @@ app.get('/api/messages', loginRequired, async function(req, res, next) {
   }
 });
 
-app.use(function(req, res, next) {
-  let err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   let err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
-app.use(errorHandler);
+// app.use(errorHandler);
+
+// make express use react routes
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('warbler-client/build'));
+
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, 'warbler-client', 'build', 'index.html')
+    );
+  });
+}
 
 if (process.env.NODE_ENV === 'production') {
   // express serves production assets (i.e. main.js, main.css)
