@@ -1,9 +1,9 @@
 const proxy = require('http-proxy-middleware');
 const proxyUrl =
 	process.env.NODE === 'production'
-		? `http://localhost:${process.env.PORT}`
+		? `https://dashboard.heroku.com/apps/salty-plains-44028:${process.env.PORT}`
 		: 'http://localhost:8081';
 
 module.exports = function(app) {
-	app.use(proxy('/api/', { target: proxyUrl }));
+	app.use(proxy('/api/**', { target: proxyUrl }));
 };

@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Homepage from '../components/Homepage';
 import AuthForm from '../components/AuthForm';
+import Errorpage from '../components/Errorpage';
 import { authUser } from '../store/actions/auth';
 import { removeError } from '../store/actions/errors';
 import withAuth from '../hocs/withAuth';
@@ -55,6 +56,7 @@ const Main = props => {
           path="/users/:id/messages/new"
           component={withAuth(MessageForm)}
         />
+        <Route component={Errorpage} />
       </Switch>
     </div>
   );
