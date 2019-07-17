@@ -6,9 +6,9 @@ A Twitter clone built using node.js and a mongodb backend.
 
 ## URL
 
-TODO
+(https://salty-plains-44028.herokuapp.com/)[https://salty-plains-44028.herokuapp.com/]
 
-## Usage
+## Usage for developers
 
 ### Development Variables
 
